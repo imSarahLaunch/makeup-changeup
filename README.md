@@ -1,4 +1,4 @@
-# Makeup Changeup
+# Makeup ChangeUp
 
 ## Overview
 A web application that allows makeup users to add makeup items to a list to keep track of when they expire.
