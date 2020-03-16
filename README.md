@@ -15,3 +15,6 @@ A web application that allows makeup users to add makeup items to a list to keep
 * MySQL
 * Hibernate
 * Thymeleaf templates
+
+## License
+[GNU General Public License v3](https://github.com/imSarahLaunch/makeup-changeup/blob/master/COPYING)
