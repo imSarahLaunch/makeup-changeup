@@ -9,7 +9,7 @@
 <form method="post">
     <div class="form-group">
         <label>Name
-            <input class="form-control" type="text" name="name" />
+            <input class="form-control" type="text" name="itemName" />
         </label>
     </div>
     <div class="form-group">
@@ -21,22 +21,23 @@
         <label>Expiration (Months)
             <div class="form-group">
                 <label class="radio-inline">3
-                    <input type="radio" name="expiration" />
+                    <input type="radio" name="expiration" value="3" />
                 </label>
                 <label class="radio-inline">6
-                    <input type="radio" name="expiration" />
+                    <input type="radio" name="expiration" value="6" />
                 </label>
                 <label class="radio-inline">12
-                    <input type="radio" name="expiration" />
+                    <input type="radio" name="expiration" value="12" />
                 </label>
                 <label class="radio-inline">18
-                    <input type="radio" name="expiration" />
+                    <input type="radio" name="expiration" value="18" />
                 </label>
                 <label class="radio-inline">24
-                    <input type="radio" name="expiration" />
-                </label><br>
-                <input type="submit" value="Save" class="btn btn-primary" />
-                <input type="submit" value="Open" class="btn btn-success" />
+                    <input type="radio" name="expiration" value="24" />
+                </label><br><br>
+                <input type="submit" value="Save" class="btn btn-info" />
+                <input type="submit" value="Open" class="Submit btn btn-success" />
+                <script type="text/javascript" th:src="@{/script.js}"></script>
             </div>
         </label>
     </div>

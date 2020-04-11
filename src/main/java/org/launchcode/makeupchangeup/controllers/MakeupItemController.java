@@ -31,8 +31,9 @@ public class MakeupItemController {
     }
 
     @PostMapping("add")
-    public String processAddItemForm(@RequestParam String itemName) {
-        items.add(new MakeupItem(itemName));
+    public String processAddItemForm(@RequestParam String itemName, @RequestParam String purchaseDate,
+                                     @RequestParam String expiration) {
+        items.add(new MakeupItem(itemName, purchaseDate, expiration));
         return "redirect:";
     }
 }
