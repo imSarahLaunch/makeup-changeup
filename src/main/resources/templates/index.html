@@ -4,13 +4,13 @@
 <body>
 <header th:replace="fragments :: header"></header>
 <div class="container body-content text-center">
-    <h1>Welcome!</h1>
+    <h1>Welcome!</h1><br>
     <ul class="nav flex-column">
         <li class="nav-item">
-            <a class="nav-link" th:href="@{/makeupItems/add}">Add Item</a>
-        </li>
+            <a class="btn btn-dark btn-lg btn-block" th:href="@{/makeupItems/add}">Add Item</a>
+        </li><br>
         <li class="nav-item">
-            <a class="nav-link" th:href="@{/makeupItems}">View List</a>
+            <a class="btn btn-dark btn-lg btn-block" th:href="@{/makeupItems}">View List</a>
         </li>
     </ul>
 </div>

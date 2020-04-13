@@ -19,8 +19,12 @@
         <td th:text="${item.name}"></td>
         <td th:text="${item.purchaseDate}"></td>
         <td th:text="${item.expiration}"></td>
+        <td>
+            <input type="submit" value="Delete" class="btn btn-danger" />
+        </td>
     </tr>
     </thead>
-</table>
+</table><br>
+<a class="btn btn-outline-dark" th:href="@{'/makeupItems/add'}">Add Another Item</a>
 </body>
 </html>
