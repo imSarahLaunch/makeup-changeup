@@ -1,5 +1,6 @@
 package org.launchcode.makeupchangeup.controllers;
 
+import org.launchcode.makeupchangeup.data.MakeupItemData;
 import org.launchcode.makeupchangeup.models.MakeupItem;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,12 +16,12 @@ import java.util.List;
 @RequestMapping("makeupItems")
 public class MakeupItemController {
 
-    private static List<MakeupItem> items = new ArrayList<>();
+//    private static List<MakeupItem> items = new ArrayList<>();
 
     @GetMapping
     public String displayAllItems(Model model) {
         model.addAttribute("title", "Makeup ChangeUp: All Items");
-        model.addAttribute("items", items);
+        model.addAttribute("items", MakeupItemData.getAll());
         return "makeupItems/index";
     }
 
@@ -33,7 +34,7 @@ public class MakeupItemController {
     @PostMapping("add")
     public String processAddItemForm(@RequestParam String itemName, @RequestParam String purchaseDate,
                                      @RequestParam String expiration) {
-        items.add(new MakeupItem(itemName, purchaseDate, expiration));
+        MakeupItemData.add(new MakeupItem(itemName, purchaseDate, expiration));
         return "redirect:";
     }
 }
