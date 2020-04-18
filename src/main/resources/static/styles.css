@@ -1,3 +1,7 @@
 .body-content {
     margin-top: 92px;
 }
+
+.error {
+    color: red;
+}

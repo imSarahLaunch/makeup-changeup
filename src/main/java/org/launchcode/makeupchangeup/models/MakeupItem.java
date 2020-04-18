@@ -1,6 +1,7 @@
 package org.launchcode.makeupchangeup.models;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 public class MakeupItem {
@@ -23,6 +24,8 @@ public class MakeupItem {
         this.id = nextId;
         nextId++;
     }
+
+    public MakeupItem() {}
 
     public String getName() {
         return name;
