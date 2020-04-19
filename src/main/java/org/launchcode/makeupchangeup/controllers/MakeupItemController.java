@@ -1,26 +1,26 @@
 package org.launchcode.makeupchangeup.controllers;
 
-import org.launchcode.makeupchangeup.data.MakeupItemData;
+import org.launchcode.makeupchangeup.data.MakeupItemRepository;
 import org.launchcode.makeupchangeup.models.MakeupItem;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 @RequestMapping("makeupItems")
 public class MakeupItemController {
 
-//    private static List<MakeupItem> items = new ArrayList<>();
+    @Autowired
+    private MakeupItemRepository makeupItemRepository;
 
     @GetMapping
     public String displayAllItems(Model model) {
         model.addAttribute("title", "Makeup ChangeUp: All Items");
-        model.addAttribute("items", MakeupItemData.getAll());
+        model.addAttribute("items", makeupItemRepository.findAll());
         return "makeupItems/index";
     }
 
@@ -37,14 +37,14 @@ public class MakeupItemController {
             model.addAttribute("title", "Makeup ChangeUp: Add Item");
             return "makeupItems/add";
         }
-        MakeupItemData.add(makeupItem);
+        makeupItemRepository.save(makeupItem);
         return "redirect:";
     }
 
     @GetMapping("delete")
     public String displayDeleteItemForm(Model model) {
         model.addAttribute("title", "Makeup ChangeUp: Delete Items");
-        model.addAttribute("items", MakeupItemData.getAll());
+        model.addAttribute("items", makeupItemRepository.findAll());
         return "makeupItems/delete";
     }
 
@@ -52,7 +52,7 @@ public class MakeupItemController {
     public String processDeleteItemForm(@RequestParam(required = false) int[] itemIds) {
         if(itemIds != null) {
             for (int id : itemIds) {
-                MakeupItemData.remove(id);
+                makeupItemRepository.deleteById(id);
             }
         }
         return "redirect:";
