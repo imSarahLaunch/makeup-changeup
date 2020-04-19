@@ -9,18 +9,17 @@
 <table class="table table-striped">
     <thead>
     <tr>
-        <th>ID</th>
         <th>Name</th>
         <th>Purchase Date</th>
         <th>Expiration (Months)</th>
     </tr>
     <tr th:each="item : ${items}">
-        <td th:text="${item.id}"></td>
         <td th:text="${item.name}"></td>
         <td th:text="${item.purchaseDate}"></td>
         <td th:text="${item.expiration}"></td>
         <td>
-            <input type="submit" value="Delete" class="btn btn-danger" />
+            <a class="btn btn-danger" th:href="@{'/makeupItems/delete/' + ${item.id}}">Delete</a>
+<!--            <input type="submit" value="Delete" class="btn btn-danger" />-->
         </td>
     </tr>
     </thead>

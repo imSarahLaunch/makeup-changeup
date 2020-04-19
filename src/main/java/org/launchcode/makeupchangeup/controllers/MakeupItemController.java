@@ -9,6 +9,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("makeupItems")
@@ -41,20 +42,9 @@ public class MakeupItemController {
         return "redirect:";
     }
 
-    @GetMapping("delete")
-    public String displayDeleteItemForm(Model model) {
-        model.addAttribute("title", "Makeup ChangeUp: Delete Items");
-        model.addAttribute("items", makeupItemRepository.findAll());
-        return "makeupItems/delete";
-    }
-
-    @PostMapping("delete")
-    public String processDeleteItemForm(@RequestParam(required = false) int[] itemIds) {
-        if(itemIds != null) {
-            for (int id : itemIds) {
-                makeupItemRepository.deleteById(id);
-            }
-        }
-        return "redirect:";
+    @GetMapping("delete/{itemId}")
+    public String handleDeleteItem(Model model, @PathVariable int itemId) {
+        makeupItemRepository.deleteById(itemId);
+        return "redirect:../";
     }
 }
