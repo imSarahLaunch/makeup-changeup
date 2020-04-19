@@ -1,14 +1,17 @@
 package org.launchcode.makeupchangeup.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
+@Entity
 public class MakeupItem {
 
+    @Id
+    @GeneratedValue
     private int id;
-
-    private static int nextId = 1;
 
     @NotBlank(message = "Name is required.")
     private String name;
@@ -21,8 +24,6 @@ public class MakeupItem {
         this.name = name;
         this.purchaseDate = purchaseDate;
         this.expiration = expiration;
-        this.id = nextId;
-        nextId++;
     }
 
     public MakeupItem() {}
