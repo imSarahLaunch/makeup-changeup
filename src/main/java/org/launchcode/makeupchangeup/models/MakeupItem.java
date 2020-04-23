@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
+import java.util.Date;
 import java.util.Objects;
 
 @Entity
@@ -20,10 +21,13 @@ public class MakeupItem {
 
     private String expiration;
 
-    public MakeupItem(String name, String purchaseDate, String expiration) {
+    private String expires;
+
+    public MakeupItem(String name, String purchaseDate, String expiration, String expires) {
         this.name = name;
         this.purchaseDate = purchaseDate;
         this.expiration = expiration;
+        this.expires = expires;
     }
 
     public MakeupItem() {}
@@ -50,6 +54,14 @@ public class MakeupItem {
 
     public void setExpiration(String expiration) {
         this.expiration = expiration;
+    }
+
+    public String getExpires() {
+        return expires;
+    }
+
+    public void setExpires(String expires) {
+        this.expires = expires;
     }
 
     public int getId() {

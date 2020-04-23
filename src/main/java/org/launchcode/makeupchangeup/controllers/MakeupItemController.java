@@ -9,7 +9,10 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.Optional;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.Date;
+import java.util.Timer;
 
 @Controller
 @RequestMapping("makeupItems")
@@ -22,6 +25,9 @@ public class MakeupItemController {
     public String displayAllItems(Model model) {
         model.addAttribute("title", "Makeup ChangeUp: All Items");
         model.addAttribute("items", makeupItemRepository.findAll());
+        LocalDate today = LocalDate.now();
+        model.addAttribute("expireButton", today.toString());
+        model.addAttribute("pastExpire", today);
         return "makeupItems/index";
     }
 
@@ -38,6 +44,9 @@ public class MakeupItemController {
             model.addAttribute("title", "Makeup ChangeUp: Add Item");
             return "makeupItems/add";
         }
+        LocalDate date = LocalDate.parse(makeupItem.getPurchaseDate());
+        LocalDate returnValue = date.plusMonths(Integer.parseInt(makeupItem.getExpiration()));
+        makeupItem.setExpires(returnValue.toString());
         makeupItemRepository.save(makeupItem);
         return "redirect:";
     }

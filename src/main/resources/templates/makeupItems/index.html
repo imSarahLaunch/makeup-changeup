@@ -10,15 +10,17 @@
     <thead>
     <tr>
         <th>Name</th>
-        <th>Purchase Date</th>
+        <th>Open Date</th>
         <th>Expiration (Months)</th>
+        <th>Expires</th>
     </tr>
     <tr th:each="item : ${items}">
         <td th:text="${item.name}"></td>
         <td th:text="${item.purchaseDate}"></td>
         <td th:text="${item.expiration}"></td>
+        <td th:text="${item.expires}"></td>
         <td>
-            <a class="btn btn-danger" th:href="@{'/makeupItems/delete/' + ${item.id}}">Delete</a>
+            <a class="btn btn-outline-danger" th:href="@{'/makeupItems/delete/' + ${item.id}}" th:style="${item.expires.compareTo(expireButton)} == 0 ? 'background-color: red; color: white' : ''" th:styleappend="${item.expires.compareTo(expireButton)} < 0 ? 'background-color: red; color: white' : ''">Delete</a>
 <!--            <input type="submit" value="Delete" class="btn btn-danger" />-->
         </td>
     </tr>
