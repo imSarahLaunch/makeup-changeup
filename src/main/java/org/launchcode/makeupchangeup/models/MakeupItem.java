@@ -1,10 +1,11 @@
 package org.launchcode.makeupchangeup.models;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.validation.constraints.NotBlank;
-import java.util.Date;
+import javax.validation.constraints.*;
 import java.util.Objects;
 
 @Entity
@@ -17,6 +18,7 @@ public class MakeupItem {
     @NotBlank(message = "Name is required.")
     private String name;
 
+    @NotBlank(message = "Date is required.")
     private String purchaseDate;
 
     private String expiration;

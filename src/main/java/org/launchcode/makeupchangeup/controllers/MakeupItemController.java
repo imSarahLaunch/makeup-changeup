@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.Date;
-import java.util.Timer;
+
 
 @Controller
 @RequestMapping("makeupItems")
