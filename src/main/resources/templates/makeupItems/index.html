@@ -24,6 +24,9 @@
             <a class="btn btn-outline-danger" th:href="@{'/makeupItems/delete/' + ${item.id}}" th:style="${item.expires.compareTo(expireButton)} == 0 ? 'background-color: red; color: white' : ''" th:styleappend="${item.expires.compareTo(expireButton)} < 0 ? 'background-color: red; color: white' : ''">Delete</a>
 <!--            <input type="submit" value="Delete" class="btn btn-danger" />-->
         </td>
+        <td>
+            <a class="btn btn-outline-secondary" th:href="@{'/makeupItems/edit/' +${item.id}}">Edit</a>
+        </td>
     </tr>
     </thead>
 </table><br>

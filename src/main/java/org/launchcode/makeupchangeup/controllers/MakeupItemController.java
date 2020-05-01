@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.time.LocalDate;
+import java.util.Optional;
 
 
 @Controller
@@ -45,6 +46,23 @@ public class MakeupItemController {
         LocalDate date = LocalDate.parse(makeupItem.getPurchaseDate());
         LocalDate returnValue = date.plusMonths(Integer.parseInt(makeupItem.getExpiration()));
         makeupItem.setExpires(returnValue.toString());
+        makeupItemRepository.save(makeupItem);
+        return "redirect:";
+    }
+
+    @GetMapping("edit/{itemId}")
+    public String displayEditItemForm(Model model, @PathVariable int itemId) {
+        Optional<MakeupItem> item = makeupItemRepository.findById(itemId);
+        MakeupItem makeupItem = item.get();
+        model.addAttribute("title", "Makeup ChangeUp: Edit Item" + makeupItem.getName());
+        model.addAttribute("makeupItem", makeupItem);
+        return "makeupItems/edit";
+    }
+
+    @PostMapping("edit")
+    public String processEditItemForm(@ModelAttribute @Valid MakeupItem makeupItem, int itemId) {
+        Optional<MakeupItem> item = makeupItemRepository.findById(itemId);
+        item.get();
         makeupItemRepository.save(makeupItem);
         return "redirect:";
     }
