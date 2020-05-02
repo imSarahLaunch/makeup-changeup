@@ -42,10 +42,10 @@
                     <input type="radio" name="expiration" value="24" class="showSubmit" />
                 </label><br>
                 <input type="submit" value="Save" class="btn btn-info" id="Submit" />
+                <input type="hidden" th:value="${makeupItem.id}" name="itemId" />
             </div>
         </label>
     </div>
-    <input type="hidden" th:value="${makeupItem.id}" name="makeupItemId" />
 </form>
 <div th:replace="fragments :: script"></div>
 <script type="text/javascript" th:src="@{/script.js}"></script>

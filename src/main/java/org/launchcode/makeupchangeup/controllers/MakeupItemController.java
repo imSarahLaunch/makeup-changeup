@@ -54,16 +54,21 @@ public class MakeupItemController {
     public String displayEditItemForm(Model model, @PathVariable int itemId) {
         Optional<MakeupItem> item = makeupItemRepository.findById(itemId);
         MakeupItem makeupItem = item.get();
-        model.addAttribute("title", "Makeup ChangeUp: Edit Item" + makeupItem.getName());
+        model.addAttribute("title", "Makeup ChangeUp: Edit Item: " + makeupItem.getName());
         model.addAttribute("makeupItem", makeupItem);
         return "makeupItems/edit";
     }
 
     @PostMapping("edit")
-    public String processEditItemForm(@ModelAttribute @Valid MakeupItem makeupItem, int itemId) {
-        Optional<MakeupItem> item = makeupItemRepository.findById(itemId);
-        item.get();
-        makeupItemRepository.save(makeupItem);
+    public String processEditItemForm(@ModelAttribute @Valid MakeupItem makeupItem, @RequestParam Integer itemId) {
+        MakeupItem makeupItem1 = makeupItemRepository.findById(itemId).get();
+        makeupItem1.setName(makeupItem.getName());
+        makeupItem1.setPurchaseDate(makeupItem.getPurchaseDate());
+        makeupItem1.setExpiration(makeupItem.getExpiration());
+        LocalDate date = LocalDate.parse(makeupItem.getPurchaseDate());
+        LocalDate returnValue = date.plusMonths(Integer.parseInt(makeupItem.getExpiration()));
+        makeupItem1.setExpires(returnValue.toString());
+        makeupItemRepository.save(makeupItem1);
         return "redirect:";
     }
 
