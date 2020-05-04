@@ -60,7 +60,11 @@ public class MakeupItemController {
     }
 
     @PostMapping("edit")
-    public String processEditItemForm(@ModelAttribute @Valid MakeupItem makeupItem, @RequestParam Integer itemId) {
+    public String processEditItemForm(@ModelAttribute @Valid MakeupItem makeupItem, Errors errors, @RequestParam Integer itemId, Model model) {
+        if(errors.hasErrors()) {
+            model.addAttribute("title", "Makeup ChangeUp: Edit Item: " + makeupItem.getName());
+            return "makeupItems/edit";
+        }
         MakeupItem makeupItem1 = makeupItemRepository.findById(itemId).get();
         makeupItem1.setName(makeupItem.getName());
         makeupItem1.setPurchaseDate(makeupItem.getPurchaseDate());
