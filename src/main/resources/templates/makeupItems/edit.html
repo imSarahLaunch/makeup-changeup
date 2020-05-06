@@ -37,8 +37,10 @@
                 <label class="radio-inline">24
                     <input type="radio" name="expiration" value="24" class="showSubmit" />
                 </label><br>
-                <input type="submit" value="Save" class="btn btn-info" id="Submit" />
+                <p class="error" th:errors="${makeupItem.expiration}"></p>
+                <input type="submit" value="Save" class="btn btn-info" />
                 <input type="hidden" th:value="${makeupItem.id}" name="itemId" />
+                <a class="btn btn-secondary" th:href="@{'/makeupItems'}">Cancel</a>
             </div>
         </label>
     </div>

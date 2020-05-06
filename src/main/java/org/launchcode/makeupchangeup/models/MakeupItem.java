@@ -21,6 +21,7 @@ public class MakeupItem {
     @NotBlank(message = "Date is required.")
     private String purchaseDate;
 
+    @NotNull(message = "Please select one of the months.")
     private String expiration;
 
     private String expires;
