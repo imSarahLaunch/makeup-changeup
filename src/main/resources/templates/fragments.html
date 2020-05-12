@@ -16,9 +16,12 @@
                 <ul class="navbar-nav">
                     <li><a class="nav-item nav-link" th:href="@{/makeupItems/add}">Add</a></li>
                     <li><a class="nav-item nav-link" th:href="@{/makeupItems}">View</a></li>
-<!--                    <li><a class="nav-item nav-link" th:href="@{/makeupItems/delete}">Delete</a></li>-->
                 </ul>
             </div>
+            <form class="form-inline">
+                <input type="search" placeholder="Search" class="form-control mr-sm-2" />
+                <input type="submit" value="Search" class="btn btn-outline-light my-2 my-sm-0" />
+            </form>
         </div>
     </div>
 </header>
